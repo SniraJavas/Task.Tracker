@@ -38,7 +38,7 @@ namespace WeBelieveIT.Task.Tracker
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -48,8 +48,13 @@ namespace WeBelieveIT.Task.Tracker
             }
            
 
-            var context = app.ApplicationServices.GetService<ApiContext>();
-            AddTestData(context);
+            //var context = app.ApplicationServices.GetService<ApiContext>();
+            using (var ServiceScope = app.ApplicationServices.CreateScope()) 
+            {
+                var Context = ServiceScope.ServiceProvider.GetService<ApiContext>();
+                AddTestData(Context);
+            }
+               
 
             app.UseHttpsRedirection();
 
@@ -125,14 +130,14 @@ namespace WeBelieveIT.Task.Tracker
 
             var progress4 = new Progress()
             {
-                Id = 3,
+                Id = 4,
                 Name = "Review",
 
             };
 
             var progress5 = new Progress()
             {
-                Id = 3,
+                Id = 5,
                 Name = "Done",
 
             };
