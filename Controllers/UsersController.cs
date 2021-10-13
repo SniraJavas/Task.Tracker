@@ -22,29 +22,32 @@ namespace WeBelieveIT.Task.Tracker.Controllers
 
         // GET: api/Users
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        public ActionResult<List<User>> GetUsers()
         {
-            return await _context.Users.ToListAsync();
+            return _context.Users.ToList();
         }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(string id)
+        public ActionResult<User> GetUser(string id)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = _context.Users.FindAsync(id);
 
-            if (user == null)
+            if (user.IsCompleted && user.Result == null)
             {
-                return NotFound();
+                    return NotFound();
+
+            }
+            else {
+                return Ok(user);
             }
 
-            return user;
         }
 
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(string id, User user)
+        public ActionResult<User> PutUser(string id, User user)
         {
             if (id != user.Id)
             {
@@ -55,7 +58,7 @@ namespace WeBelieveIT.Task.Tracker.Controllers
 
             try
             {
-                await _context.SaveChangesAsync();
+                 _context.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -75,12 +78,12 @@ namespace WeBelieveIT.Task.Tracker.Controllers
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public ActionResult<User> PostUser(User user)
         {
             _context.Users.Add(user);
             try
             {
-                await _context.SaveChangesAsync();
+                _context.SaveChanges();
             }
             catch (DbUpdateException)
             {
@@ -99,16 +102,16 @@ namespace WeBelieveIT.Task.Tracker.Controllers
 
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(string id)
+        public ActionResult<User> DeleteUser(string id)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = _context.Users.Find(id);
             if (user == null)
             {
                 return NotFound();
             }
 
             _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
 
             return NoContent();
         }

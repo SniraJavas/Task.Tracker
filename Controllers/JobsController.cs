@@ -22,16 +22,16 @@ namespace WeBelieveIT.Task.Tracker.Controllers
 
         // GET: api/Jobs
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Job>>> GetJobs()
+        public ActionResult<IEnumerable<Job>> GetJobs()
         {
-            return await _context.Jobs.ToListAsync();
+            return _context.Jobs.ToList();
         }
 
         // GET: api/Jobs/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Job>> GetJob(string id)
+        public ActionResult<Job> GetJob(string id)
         {
-            var job = await _context.Jobs.FindAsync(id);
+            var job = _context.Jobs.Find(id);
 
             if (job == null)
             {
@@ -44,7 +44,7 @@ namespace WeBelieveIT.Task.Tracker.Controllers
         // PUT: api/Jobs/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutJob(string id, Job job)
+        public ActionResult<Job> PutJob(string id, Job job)
         {
             if (id != job.Id)
             {
@@ -55,7 +55,7 @@ namespace WeBelieveIT.Task.Tracker.Controllers
 
             try
             {
-                await _context.SaveChangesAsync();
+                 _context.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -75,12 +75,12 @@ namespace WeBelieveIT.Task.Tracker.Controllers
         // POST: api/Jobs
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Job>> PostJob(Job job)
+        public ActionResult<Job> PostJob(Job job)
         {
             _context.Jobs.Add(job);
             try
             {
-                await _context.SaveChangesAsync();
+               _context.SaveChanges();
             }
             catch (DbUpdateException)
             {

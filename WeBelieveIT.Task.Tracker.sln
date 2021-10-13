@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeBelieveIT.Task.Tracker", "WeBelieveIT.Task.Tracker.csproj", "{67D600E1-2230-4B37-984D-DC988D41BB2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeBelieveIT.Task.Tracker.Api", "WeBelieveIT.Task.Tracker.Api.csproj", "{67D600E1-2230-4B37-984D-DC988D41BB2D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeBelieveIT.Task.Tracker.Test", "..\WeBelieveIT.Task.Tracker.Test\WeBelieveIT.Task.Tracker.Test.csproj", "{78084EA1-5561-4D8E-A4A8-093F6C82BF70}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{67D600E1-2230-4B37-984D-DC988D41BB2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67D600E1-2230-4B37-984D-DC988D41BB2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67D600E1-2230-4B37-984D-DC988D41BB2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78084EA1-5561-4D8E-A4A8-093F6C82BF70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78084EA1-5561-4D8E-A4A8-093F6C82BF70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78084EA1-5561-4D8E-A4A8-093F6C82BF70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78084EA1-5561-4D8E-A4A8-093F6C82BF70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

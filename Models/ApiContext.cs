@@ -13,6 +13,8 @@ namespace WeBelieveIT.Task.Tracker.Models
         {
         }
 
+ 
+
         public DbSet<User> Users { get; set; }
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Progress> Progress { get; set; }

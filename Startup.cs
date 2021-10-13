@@ -18,10 +18,13 @@ namespace WeBelieveIT.Task.Tracker
 {
     public class Startup
     {
+        public ApiContext Context { set; get; }
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
+
+    
 
         public IConfiguration Configuration { get; }
 
@@ -51,7 +54,7 @@ namespace WeBelieveIT.Task.Tracker
             //var context = app.ApplicationServices.GetService<ApiContext>();
             using (var ServiceScope = app.ApplicationServices.CreateScope()) 
             {
-                var Context = ServiceScope.ServiceProvider.GetService<ApiContext>();
+                Context = ServiceScope.ServiceProvider.GetService<ApiContext>();
                 AddTestData(Context);
             }
                
