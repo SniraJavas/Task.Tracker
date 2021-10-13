@@ -24,7 +24,9 @@ namespace WeBelieveIT.Task.Tracker
             Configuration = configuration;
         }
 
-    
+        public Startup()
+        {
+        }
 
         public IConfiguration Configuration { get; }
 
